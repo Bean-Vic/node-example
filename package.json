@@ -1,0 +1,22 @@
+{
+  "name": "node-example",
+  "version": "1.0.0",
+  "description": "MERN example project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bean-Vic/node-example.git"
+  },
+  "author": "Bean",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bean-Vic/node-example/issues"
+  },
+  "homepage": "https://github.com/Bean-Vic/node-example#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
