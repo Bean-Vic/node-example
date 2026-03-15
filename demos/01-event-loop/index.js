@@ -6,14 +6,18 @@
  */
 
 console.log('--- 演示：Event Loop 执行顺序 ---');
-console.log('预期顺序应该为: 1 (Sync), 5 (Sync), 4 (nextTick), 3 (Promise), 2 (setTimeout)');
+console.log('预期顺序应该为: 1 (Sync), 5 (Sync), 4 (nextTick), 3 (Promise), 2 (setTimeout), 6 (setImmediate)');
 console.log('-----------------------------------');
 
 console.log('1. 同步代码 - earliest');
 
 setTimeout(() => {
-    console.log('2. setTimeout - macrotask');
+    console.log('2. setTimeout - macrotask (timers phase)');
 }, 0);
+
+setImmediate(() => {
+    console.log('6. setImmediate - macrotask (check phase)');
+});
 
 Promise.resolve().then(() => {
     console.log('3. Promise.then - microtask');
