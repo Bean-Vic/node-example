@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Bean-Vic/node-example#readme",
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "mongoose": "^9.3.0"
   }
 }

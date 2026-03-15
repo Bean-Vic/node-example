@@ -40,17 +40,25 @@ user1.preSaveRegular = function() {
 user1.save().then(() => {
     
     // 场景 2: 使用箭头函数 (错误做法)
-    console.log('\n💣 场景 2: 使用箭头函数 (错误) -> this 对象是 undefined（或继承外层作用域的 window/global）');
+    console.log('\n💣 场景 2: 使用箭头函数 (错误) -> this 对象是 undefined（或继承外层作用域的模块 exports 对象 {}）');
     const user2 = new MockUserModel('Bob', '987654');
     user2.preSaveArrow = () => {
-        // 下面这行会输出 undefined，因为箭头函数内部没有 this，这里会试图从全局继承
+        // 在 Node.js 模块顶层作用域中，this 默认是 module.exports（一个空对象 {}）。
+        // 在严格模式或某些打包环境下，this 可能会是 undefined。
+        // 关键是：它绝对不是当前的 user2 文档实例！
         console.log(`[Hook] Arrow function 'this' context is:`, this); 
         
         try {
-            // this.password 这里会是不能设置/获取的异常或者未定义
+            // this.password 在空对象上是 undefined
+            // 虽然这里能赋值，但它修改的是外层作用域的 this（即 module.exports），而不是用户文档！
             this.password = '###HASHED-' + this.password + '###';
+            
+            // 为了演示 Mongoose 中常见的错误（尝试调用文档方法），我们模拟调用一个不存在的方法
+            if (!this.isModified) {
+                throw new TypeError('this.isModified is not a function (this is not the document)');
+            }
         } catch (e) {
-            console.error('[Hook] Error in arrow function hook:', e.message);
+            console.error('[Hook] ❌ Error in arrow function hook:', e.message);
         }
     };
     return user2.save();
