@@ -29,4 +29,4 @@ console.log('5. 同步代码 - latest');
 setTimeout(() => {
     console.log('\n✅ 演示结束，进程即将退出。\n');
     process.exit(0);
-}, 100);
+}, 1000);
