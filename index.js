@@ -4,12 +4,12 @@ const path = require('path');
 
 const demos = [
     { id: 1, name: 'Event Loop Execution Order', path: './demos/01-event-loop/index.js' },
-    { id: 2, name: 'Express Middleware Order', path: './demos/02-express-middleware/index.js' },
-    { id: 3, name: 'Express Async Error Handling', path: './demos/03-express-error-handling/index.js' },
-    { id: 4, name: 'Mongoose Hooks and "this"', path: './demos/04-mongoose-hooks/index.js' },
-    { id: 5, name: 'RESTful API Mock', path: './demos/05-restful-api/index.js' },
-    { id: 6, name: 'JWT Auth Flow Simulation', path: './demos/06-jwt-auth/index.js' },
-    { id: 7, name: 'setImmediate vs setTimeout', path: './demos/07-setimmediate-vs-settimeout/index.js' }
+    { id: 2, name: 'setImmediate vs setTimeout', path: './demos/02-setimmediate-vs-settimeout/index.js' },
+    { id: 3, name: 'Express Middleware Order', path: './demos/03-express-middleware/index.js' },
+    { id: 4, name: 'Express Async Error Handling', path: './demos/04-express-error-handling/index.js' },
+    { id: 5, name: 'Mongoose Hooks and "this"', path: './demos/05-mongoose-hooks/index.js' },
+    { id: 6, name: 'RESTful API Mock', path: './demos/06-restful-api/index.js' },
+    { id: 7, name: 'JWT Auth Flow Simulation', path: './demos/07-jwt-auth/index.js' }
 ];
 
 const rl = readline.createInterface({
